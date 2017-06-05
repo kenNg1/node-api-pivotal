@@ -9,7 +9,7 @@ module.exports = {
 			},
 			email: {
 				type: Sequelize.STRING,
-				alloeNull: false,
+				allowNull: false,
 				unique: true,
 				validate: {
 					isLowercase: true,
@@ -42,7 +42,7 @@ module.exports = {
 				type: Sequelize.STRING,
 				defaultValue: 'user',
 				validate: {
-				isIn: [['user', 'admin', 'super admin']]
+					isIn: [['user', 'admin', 'super admin']]
 				}
 			},
 			createdAt: {
@@ -53,8 +53,8 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.DATE
 			}
-		}, {
+		}/*, {
 			schema: 'admin'
-		}),
-	down: (queryInterface) => queryInterface.dropTable('Users'),
+		}*/),
+	down: (queryInterface) => queryInterface.dropTable('Users')
 };

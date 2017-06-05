@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "aa71b1e4",
-    "database": "unknow_post_dev",
+    "database": "simple_blog_dev",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
@@ -10,7 +10,7 @@
   "test": {
     "username": "postgres",
     "password": "aa71b1e4",
-    "database": "unknow_post_test",
+    "database": "simple_blog_test",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
@@ -18,7 +18,7 @@
   "production": {
     "username": "postgres",
     "password": "aa71b1e4",
-    "database": "unknow_post",
+    "database": "simple_blog",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
