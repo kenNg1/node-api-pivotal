@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define('User', {
 		email: {
 			type: DataTypes.STRING,
-			alloeNull: false,
+			allowNull: false,
 			unique: true,
 			validate: {
 				isLowercase: true,
@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			defaultValue: 'user',
 			validate: {
-			isIn: [['user', 'admin', 'super admin']]
+				isIn: [['user', 'admin', 'super admin']]
 			}
 		}
 	}, {
-		schema: 'admin',
+		// schema: 'admin',
 		classMethods: {
 			validPassword: (password, passwd, done) => {
 				const tmppass = password + config.secret;
@@ -52,7 +52,8 @@ module.exports = (sequelize, DataTypes) => {
 				});
 			},
 			associate: (models) => {
-				/**/
+				User.hasMany(models.Post, { foreignKey: 'user_id', as : 'userPosts' });
+				User.hasMany(models.Comment, { foreignKey: 'user_id', as : 'UserComments' });
 			}
 		}
 	});
