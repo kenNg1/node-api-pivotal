@@ -37,11 +37,8 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		classMethods: {
 			associate: (models) => {
-				Post.belongsTo(models.User, {
-					foreignKey: 'user_id',
-					onDelete: 'RESTRICT',
-					onUpdate: 'CASCADE'
-				});
+				Post.belongsTo(models.User, { foreignKey: 'user_id', onDelete: 'RESTRICT', onUpdate: 'CASCADE' });
+				Post.hasMany(models.Comment, { foreignKey: 'post_id', as : 'PostComment' });
 			}
 		}
 	});
