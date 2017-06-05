@@ -5,7 +5,7 @@ const passport	= require('passport');
 const jwt		= require('jsonwebtoken');
 	
 // Setting up the server
-const app	= restify.createServer({name: 'Unknown Post'});
+const app	= restify.createServer({name: 'Simple Blog API'});
 require('./server/config/passport')(passport);
 
 // Hashing wrk factor
