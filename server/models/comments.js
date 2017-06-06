@@ -32,8 +32,8 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		classMethods: {
 			associate: (models) => {
-				Comment.belongsTo(Comment, { as: 'Parent' });
-				Comment.hasMany(Comment, { as: 'Children', foreignKey: 'parent_id', useJunctionTable: false, onDelete: 'CASCADE', onUpdate: 'CASCADE' });
+				Comment.belongsTo(Comment, { foreignKey: 'parent_id', onDelete: 'RESTRICT', onUpdate: 'CASCADE' });
+				Comment.hasMany(Comment, { as: 'Children', foreignKey: 'parent_id', useJunctionTable: false });
 				Comment.belongsTo(models.User, { foreignKey: 'user_id', onDelete: 'RESTRICT', onUpdate: 'CASCADE' });
 				Comment.belongsTo(models.Post, { foreignKey: 'post_id', onDelete: 'RESTRICT', onUpdate: 'CASCADE' });
 			}

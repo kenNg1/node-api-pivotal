@@ -14,5 +14,9 @@ module.exports = (app) => {
 	app.get('/api/profile/:userId', auth.IsAuthenticated, usersController.profile);
 
 	// All post Route
-	app.post('/api/post/new', auth.IsAuthenticated, postsController.create);
+	app.post('/api/post/', auth.IsAuthenticated, postsController.create); // new post route
+	app.put('/api/post/:postId', auth.IsAuthenticated, postsController.update); // update post route
+	app.del('/api/post/:postId', auth.IsAuthenticated, postsController.destroy); // delete post route
+	app.get('/api/posts/', auth.IsAuthenticated, postsController.list); // all post list route
+	app.get('/api/post/:postId', auth.IsAuthenticated, postsController.content); // get post content by id route
 };
