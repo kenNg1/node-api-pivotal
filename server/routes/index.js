@@ -1,4 +1,5 @@
 const usersController = require('../controllers').users;
+const postsController = require('../controllers').posts;
 const auth = require('../config/auth');
 
 module.exports = (app) => {
@@ -10,5 +11,8 @@ module.exports = (app) => {
 	app.post('/register', usersController.create);
 	app.post('/signin', usersController.login);
 	// app.get('/signout', auth.IsAuthenticated, auth.destroySession);
-	app.get('/api/profile/:userId', usersController.profile);
+	app.get('/api/profile/:userId', auth.IsAuthenticated, usersController.profile);
+
+	// All post Route
+	app.post('/api/post/new', auth.IsAuthenticated, postsController.create);
 };
