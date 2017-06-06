@@ -22,7 +22,7 @@ module.exports = {
 			.findById(req.params.postId)
 			.then(
 				post => {
-					if(!post) return req.send(404, {message: "Post Not Found![2]"});
+					if(!post) return res.send(404, {message: "Post Not Found![2]"});
 
 					return post
 						.update(req.body, { fields: Object.keys(req.body) })
@@ -46,7 +46,7 @@ module.exports = {
 						.catch( errorDelete => res.send(400, errorDelete) );
 				}
 			)
-			.catch( error => res.send(404, { message: "Post Not Found![1]", postId: req.params.postId }) );
+			.catch( error => res.send(404, { message: "Post Not Found![1]" }) );
 	},
 
 	list(req, res){

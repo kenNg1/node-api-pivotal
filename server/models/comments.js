@@ -2,17 +2,17 @@ module.exports = (sequelize, DataTypes) => {
 	const Comment = sequelize.define('Comment', {
 		nickname: {
 			type: DataTypes.STRING,
-			allowNull: true,
-			validate: {
-				notEmpty: false
-			}
+			allowNull: true
 		},
 		email: {
 			type: DataTypes.STRING,
 			allowNull: true,
 			validate: {
 				notEmpty: false,
-				isEmail: true
+				isEmail: {
+					args: true,
+					msg: "Your Email is not valid, do you even know what Email is?"
+				}
 			}
 		},
 		site: {
@@ -24,11 +24,17 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		message: {
 			type: DataTypes.TEXT,
-			allowNull: true,
+			allowNull: {
+				args: false,
+				msg: "NUll? Hey dude. You are better than this, you know!"
+			},
 			validate: {
-				notEmpty:false
+				notEmpty: {
+					args: true,
+					msg: "Empty message? Come one, just tell us what you think!"
+				}
 			}
-		},
+		}
 	}, {
 		classMethods: {
 			associate: (models) => {
@@ -38,6 +44,13 @@ module.exports = (sequelize, DataTypes) => {
 				Comment.belongsTo(models.Post, { foreignKey: 'post_id', onDelete: 'RESTRICT', onUpdate: 'CASCADE' });
 			}
 		}
+	});
+
+	Comment.beforeCreate( (comment, options, done) => {
+		if(!comment.nickname)
+			comment.nickname = "anonim";
+
+		return done(null, comment);
 	});
 
 	return Comment;
