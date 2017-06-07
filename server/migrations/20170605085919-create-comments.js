@@ -9,10 +9,7 @@ module.exports = {
 			},
 			nickname: {
 				type: Sequelize.STRING,
-				allowNull: true,
-				validate: {
-					notEmpty: false
-				}
+				allowNull: true
 			},
 			email: {
 				type: Sequelize.STRING,
@@ -52,7 +49,8 @@ module.exports = {
 					model : 'Comments',
 					key   : 'id',
 					as	  : 'parent_id'
-				}
+				},
+				// hierarchy: true
 			},
 			user_id: {
 				type      : Sequelize.INTEGER,

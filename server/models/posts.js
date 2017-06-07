@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
 		slug: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true,
+			unique: {
+				args: true,
+				msg: "Slug is not Avaliable, Try another slug"
+			},
 			validate: {
 				notEmpty: true,
 				isLowercase: true
@@ -31,7 +34,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			defaultValue: 'post',
 			validate: {
-				isIn: [['post', 'page']]
+				isIn: {
+					args: [['post', 'page']],
+					msg: "Must be in post and page type"
+				}
 			}
 		}
 	}, {
@@ -41,13 +47,6 @@ module.exports = (sequelize, DataTypes) => {
 				Post.hasMany(models.Comment, { foreignKey: 'post_id', as : 'PostComment' });
 			}
 		}
-	});
-
-	Post.beforeCreate( (post, options, done) => {
-		if(empty(post.slug)){
-			post.slug = post.id;
-		}
-		return done(null, post);
 	});
 
 	return Post;
