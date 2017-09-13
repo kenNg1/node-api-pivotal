@@ -38,12 +38,25 @@ module.exports = {
 					notEmpty: true
 				}
 			},
-			role: {
-				type: Sequelize.STRING,
-				defaultValue: 'user',
-				validate: {
-					isIn: [['user', 'admin', 'super admin']]
-				}
+			sign_in_count: {
+				allowNull: true,
+		        type: Sequelize.INTEGER
+			},
+			current_sign_in_at:{
+				allowNull: true,
+				type: Sequelize.DATE
+			},
+			last_sign_in_at:{
+				allowNull: true,
+				type: Sequelize.DATE
+			},
+			current_sign_in_ip:{
+				allowNull: true,
+				type: Sequelize.STRING
+			},
+			last_sign_in_ip:{
+				allowNull: true,
+				type: Sequelize.STRING
 			},
 			createdAt: {
 				allowNull: false,

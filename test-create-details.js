@@ -1,36 +1,31 @@
 module.exports = {
 	up: (queryInterface, Sequelize)	=>
-		queryInterface.createTable('Comments', {
+		queryInterface.createTable('Details', {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			nickname: {
-				type: Sequelize.STRING,
-				allowNull: true
-			},
-			email: {
+			firstName: {
 				type: Sequelize.STRING,
 				allowNull: true,
 				validate: {
 					notEmpty: false,
-					isEmail: true
 				}
 			},
-			site: {
+			lastName: {
 				type: Sequelize.STRING,
 				allowNull: true,
 				validate: {
 					notEmpty: false
 				}
 			},
-			message: {
-				type: Sequelize.TEXT,
-				allowNull: true,
+			tier: {
+				type: Sequelize.STRING,
+				defaultValue: 'user',
 				validate: {
-					notEmpty:false
+					isIn: [['user', 'admin', 'super admin']]
 				}
 			},
 			createdAt: {
@@ -41,17 +36,6 @@ module.exports = {
 				allowNull: false,
 				type: Sequelize.DATE
 			},
-			parent_id: {
-				type      : Sequelize.INTEGER,
-				onDelete  : 'CASCADE',
-				onUpdate  : 'CASCADE',
-				references: {
-					model : 'Comments',
-					key   : 'id',
-					as	  : 'parent_id'
-				},
-				// hierarchy: true
-			},
 			user_id: {
 				type      : Sequelize.INTEGER,
 				onDelete  : 'RESTRICT',
@@ -61,17 +45,7 @@ module.exports = {
 					key   : 'id',
 					as	  : 'user_id'
 				}
-			},
-			post_id: {
-				type      : Sequelize.INTEGER,
-				onDelete  : 'RESTRICT',
-				onUpdate  : 'CASCADE',
-				references: {
-					model : 'Posts',
-					key   : 'id',
-					as	  : 'post_id'
-				}
 			}
 		}),
-	down: (queryInterface) => queryInterface.dropTable('Comments')
+	down: (queryInterface) => queryInterface.dropTable('Details')
 }

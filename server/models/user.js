@@ -1,4 +1,6 @@
-const bcrypt = require('bcrypt');
+//need to add extra fields
+
+const bcrypt = require('bcrypt'); 
 const config = require('../config/general');
 
 module.exports = (sequelize, DataTypes) => {
@@ -34,12 +36,26 @@ module.exports = (sequelize, DataTypes) => {
 				notEmpty: true
 			}
 		},
-		role: {
+		sign_in_count: {
+			type: DataTypes.INTEGER,
+			// allowNull: false,			
+			defaultValue: 0
+		},
+		current_sign_in_at: {
+			type: DataTypes.DATE,
+			// allowNull: false		
+		},
+		last_sign_in_at: {
+			type: DataTypes.DATE,
+			// allowNull: false		
+		},
+		current_sign_in_ip: {
 			type: DataTypes.STRING,
-			defaultValue: 'user',
-			validate: {
-				isIn: [['user', 'admin', 'super admin']]
-			}
+			// allowNull: false		
+		},
+		last_sign_in_ip: {
+			type: DataTypes.STRING,
+			// allowNull: false		
 		}
 	}, {
 		// schema: 'admin',
@@ -52,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
 				});
 			},
 			associate: (models) => {
-				User.hasMany(models.Post, { foreignKey: 'user_id', as : 'userPosts' });
-				User.hasMany(models.Comment, { foreignKey: 'user_id', as : 'UserComments' });
+				User.hasMany(models.Event, { foreignKey: 'user_id', as : 'userEvents' });
+				User.hasOne(models.Detail, { foreignKey: 'user_id', as : 'UserDetails' });
 			}
 		}
 	});

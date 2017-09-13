@@ -15,10 +15,10 @@ SALT_WORK_FACTOR = 12;
 app.use(logger('dev'));
 
 // Parsing incoming request data using restify
-app.use(restify.acceptParser(app.acceptable));
-app.use(restify.queryParser());
-app.use(restify.bodyParser());
-app.use(restify.urlEncodedBodyParser({mapParams: false}));
+app.use(restify.plugins.acceptParser(app.acceptable));
+app.use(restify.plugins.queryParser());
+app.use(restify.plugins.bodyParser());
+app.use(restify.plugins.urlEncodedBodyParser({mapParams: false}));
 
 // Running up the passport
 app.use(passport.initialize());

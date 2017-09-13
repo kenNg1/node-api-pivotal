@@ -5,6 +5,7 @@ const config	= require('../config/general');
 
 module.exports = {
 	create(req, res){
+		console.log(req);
 		return User
 			.find({
 				where: { $or: [{username: req.body.username}, {email: req.body.email}] }
@@ -14,8 +15,7 @@ module.exports = {
 					User.create({
 						email 	: req.body.email,
 						username: req.body.username,
-						password: req.body.password,
-						role	: req.body.role,
+						password: req.body.password
 					})
 					.then(user => res.send(200, user));
 				}
@@ -50,6 +50,7 @@ module.exports = {
 		})(req, res, next);
 	},
 	profile(req, res, next) {
+		console.log(req);		
 		return User
 			.findById(req.params.userId)
 			.then(user => {
@@ -60,8 +61,7 @@ module.exports = {
 				const data = {
 					id: user.id,
 					username: user.username,
-					email: user.email,
-					role: user.role
+					email: user.email
 				}
 				return res.send(200, data);
 

@@ -1,24 +1,24 @@
 {
   "development": {
-    "username": "postgres",
+    "username": "qwertup",
     "password": "aa71b1e4",
-    "database": "simple_blog_dev",
+    "database": "node_api_dev",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "test": {
-    "username": "postgres",
+    "username": "qwertup",
     "password": "aa71b1e4",
-    "database": "simple_blog_test",
+    "database": "node_api_test",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
   },
   "production": {
-    "username": "postgres",
+    "username": "qwertup",
     "password": "aa71b1e4",
-    "database": "simple_blog",
+    "database": "node_api",
     "host": "127.0.0.1",
     "port": 5432,
     "dialect": "postgres"
