@@ -14,6 +14,13 @@ module.exports = (app) => {
 	// app.get('/signout', auth.IsAuthenticated, auth.destroySession);
 	app.get('/api/profile/:userId', usersController.profile);
 
+	// All events Route
+	app.post('/api/event/', auth.IsAuthenticated, eventsController.create); // new post route
+	app.put('/api/event/:postId', auth.IsAuthenticated, eventsController.update); // update post route
+	app.del('/api/event/:postId', auth.IsAuthenticated, eventsController.destroy); // delete post route
+	app.get('/api/events/', auth.IsAuthenticated, eventsController.list); // all post list route
+	app.get('/api/event/:eventId', auth.IsAuthenticated, eventsController.content); // get post content by id route
+
 	// All post Route
 	app.post('/api/post/', auth.IsAuthenticated, postsController.create); // new post route
 	app.put('/api/post/:postId', auth.IsAuthenticated, postsController.update); // update post route
