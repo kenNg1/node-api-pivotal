@@ -1,16 +1,16 @@
-// const Post = require('../models').Post;
+const Event = require('../models').Event;
 const User = require('../models').User;
 // const Comment = require('../models').Comment;
 
 module.exports = {
 	create(req, res){
-		return Post
+		return Event
 			.create({
-				title		: req.body.title,
-				slug		: req.body.slug,
-				short_desc 	: req.body.short_desc,
-				content_post: req.body.content_post,
-				post_type	: (!req.body.post_type ? 'post' : req.body.post_type),
+				name		: req.body.name,
+				description	: req.body.description,
+				// short_desc 	: req.body.short_desc,
+				// content_post: req.body.content_post,
+				// post_type	: (!req.body.post_type ? 'post' : req.body.post_type),
 				user_id		: req.decoded.user
 			})
 			.then(post => res.send(200, post))
@@ -18,56 +18,56 @@ module.exports = {
 	},
 
 	update(req, res){
-		return Post
+		return Event
 			.findById(req.params.postId)
 			.then(
 				post => {
-					if(!post) return res.send(404, {message: "Post Not Found![2]"});
+					if(!post) return res.send(404, {message: "Event Not Found![2]"});
 
 					return post
 						.update(req.body, { fields: Object.keys(req.body) })
-						.then( updatePost => res.send(200, { message: "Post has been Updated!" }) )
+						.then( updateEvent => res.send(200, { message: "Event has been Updated!" }) )
 						.catch( errorUpdate => res.send(400, errorUpdate) );
 				}
 			)
-			.catch( error => res.send(404, { message: "Post Not Found![1]" }) );
+			.catch( error => res.send(404, { message: "Event Not Found![1]" }) );
 	},
 
 	destroy(req, res){
-		return Post
+		return Event
 			.findById(req.params.postId)
 			.then(
 				post => {
-					if(!post) return res.send(404, {message: "Post Not Found![2]"});
+					if(!post) return res.send(404, {message: "Event Not Found![2]"});
 
 					return post
 						.destroy()
-						.then( deletePost => res.send(200, { message: "Post has been Deleted!" }) )
+						.then( deleteEvent => res.send(200, { message: "Event has been Deleted!" }) )
 						.catch( errorDelete => res.send(400, errorDelete) );
 				}
 			)
-			.catch( error => res.send(404, { message: "Post Not Found![1]" }) );
+			.catch( error => res.send(404, { message: "Event Not Found![1]" }) );
 	},
 
-	list(req, res){
-		return Post
+	index(req, res){
+		return Event
 			.findAll()
 			.then( post => res.send(200, post) )
 			.catch( error => res.send(400, error) );
 	},
 
-	content(req, res){
-		return Post
+	show(req, res){
+		return Event
 			.findById(req.params.postId, {
-				include: [{ model: Comment, as: 'PostComment' }]
+				include: [{ model: Comment, as: 'EventComment' }]
 			})
 			.then(
 				post => {
-					if(!post) return res.send(404, { message: "Post Not Found!" });
+					if(!post) return res.send(404, { message: "Event Not Found!" });
 
 					return res.send(200, post);
 				}
 			)
-			.catch( error => res.send(404, { message: "Post Not Found!" }) );
+			.catch( error => res.send(404, { message: "Event Not Found!" }) );
 	}
 };

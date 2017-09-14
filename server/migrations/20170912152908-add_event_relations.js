@@ -15,7 +15,7 @@ module.exports = {
         'user_id',
         {
           type: Sequelize.INTEGER,
-          allowNull: false
+          // allowNull: false
         }
       ),
       queryInterface.addColumn(
@@ -23,7 +23,7 @@ module.exports = {
         'district_id',
         {
           type: Sequelize.INTEGER,
-          allowNull: false
+          // allowNull: false
         }
       ),
       queryInterface.addColumn(
@@ -31,7 +31,7 @@ module.exports = {
         'sport_id',
         {
           type: Sequelize.INTEGER,
-          allowNull: false
+          // allowNull: false
         }
       )
     ]
