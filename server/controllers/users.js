@@ -17,15 +17,13 @@ module.exports = {
 						username: req.body.username,
 						password: req.body.password
 					})
-					.then(user => res.send(200, user));
+					.then(user => res.status(200).send(user));
 				}
 				else {
-					return res.send(400, {
-						message: 'Username / Email is Already Exist'
-					});
+					return res.status(400).send({message: 'Username / Email is Already Exist'});
 				}
 			})
-			.catch(error => res.send(400, error));
+			.catch(error => res.status(400).send(error));
 	},
 	login(req, res, next) {
 		passport.authenticate('local', (err, user, info) => {
@@ -34,14 +32,14 @@ module.exports = {
 			}
 
 			if (!user) {
-				return res.send(401, {message: 'authentication failed'});
+				return res.status(401).send({message: 'authentication failed'});
 			}
 
 			req.login(user, (err) => {
 				if (err) return next(err);
 
 				const token = jwt.sign({ user: user.id }, config.secret, {expiresIn: 24 * 60 * 60});
-				return res.send(200, {
+				return res.status(200).send({
 					token 	: token,
 					userId	: user.id,
 					username: user.username
@@ -55,7 +53,7 @@ module.exports = {
 			.findById(req.params.userId)
 			.then(user => {
 				if (!user) {
-					return res.send(400, {success: false, message: 'User not Found'});
+					return res.status(400).send({success: false, message: 'User not Found'});
 				}
 				
 				const data = {
@@ -63,9 +61,9 @@ module.exports = {
 					username: user.username,
 					email: user.email
 				}
-				return res.send(200, data);
+				return res.status(200).send(data);
 
 			})
-			.catch(error => res.send(400, error));
+			.catch(error => res.status(400).send(error));
 	}
 };

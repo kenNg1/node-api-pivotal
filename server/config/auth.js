@@ -7,14 +7,14 @@ module.exports = {
 		const token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
 		if (token) {
 			jwt.verify(token, config.secret, (err, decoded) => {
-				if (err) return res.send(400, {success: false, message: 'Token is not Authentic. Check your token or Re-login to gain the New one.'})
+				if (err) return res.status(400).send({success: false, message: 'Token is not Authentic. Check your token or Re-login to gain the New one.'})
 				console.log(decoded);
 				req.decoded = decoded;
 				next()
 			});
 		}
 		else {
-			return res.send(403, {success: false, message: 'No token provided. Login again to gain a New token.'})
+			return res.status(403).send({success: false, message: 'No token provided. Login again to gain a New token.'})
 		}
 	}/*,
 	destroySession(req, res, next) {
