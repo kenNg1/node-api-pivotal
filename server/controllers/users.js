@@ -42,6 +42,7 @@ module.exports = {
 				return res.status(200).send({
 					token 	: token,
 					userId	: user.id,
+					email	: user.email,
 					username: user.username
 				});
 			});
