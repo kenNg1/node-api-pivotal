@@ -23,11 +23,13 @@ module.exports = (app) => {
 	// probs don't need this as we get the details another way... app.get('/api/profile/:userId', usersController.profile);
 
 	// All events Route
-	app.post('/api/event/', auth.IsAuthenticated, eventsController.create); // new post route
-	app.put('/api/event/:postId', auth.IsAuthenticated, eventsController.update); // update post route
-	app.delete('/api/event/:postId', auth.IsAuthenticated, eventsController.destroy); // delete post route
-	app.get('/api/events/', auth.IsAuthenticated, eventsController.index); // all post list route
-	app.get('/api/event/:eventId', auth.IsAuthenticated, eventsController.show); // get post content by id route
+	// fix the , auth.IsAuthenticated , bit
+	
+	app.post('/api/events/', eventsController.create); // new post route
+	app.put('/api/events/:postId', auth.IsAuthenticated, eventsController.update); // update post route
+	app.delete('/api/events/:postId', auth.IsAuthenticated, eventsController.destroy); // delete post route
+	app.get('/api/events/', eventsController.index); // all post list route
+	app.get('/api/events/:eventId', eventsController.show); // get post content by id route
 
 	// All post Route
 	// app.post('/api/post/', auth.IsAuthenticated, postsController.create); // new post route
