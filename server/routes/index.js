@@ -26,8 +26,8 @@ module.exports = (app) => {
 	// fix the , auth.IsAuthenticated , bit
 	
 	app.post('/api/events/', eventsController.create); // new post route
-	app.put('/api/events/:postId', auth.IsAuthenticated, eventsController.update); // update post route
-	app.delete('/api/events/:postId', auth.IsAuthenticated, eventsController.destroy); // delete post route
+	app.put('/api/events/:eventId', eventsController.update); // update post route
+	app.delete('/api/events/:eventId', eventsController.destroy); // delete post route
 	app.get('/api/events/', eventsController.index); // all post list route
 	app.get('/api/events/:eventId', eventsController.show); // get post content by id route
 

@@ -34,18 +34,20 @@ module.exports = {
 
 	update(req, res){
 		return Event
-			.findById(req.params.eventId)
+			.findById(req.body.id)
 			.then(
 				event => {
+					console.log(event);
+					console.log(req.body)
 					if(!event) return res.status(404).send({message: "Event Not Found![2]"});
 
-					return post
+					return event
 						.update(req.body, { fields: Object.keys(req.body) })
-						.then( updateEvent => res.status(200).send({ message: "Event has been Updated!" }) )
+						.then( updateEvent => res.status(200).send(event) )
 						.catch( errorUpdate => res.status(400).send(errorUpdate) );
 				}
 			)
-			.catch( error => res.status(404).send({ message: "Event Not Found![1]" }) );
+			.catch( error => res.status(404).send(error) );
 	},
 
 	destroy(req, res){

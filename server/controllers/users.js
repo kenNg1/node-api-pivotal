@@ -6,7 +6,6 @@ const config	= require('../config/general');
 
 module.exports = {
 	create(req, res){
-		console.log(req);
 		return User
 			.find({
 				where: { $or: [{username: req.body.username}, {email: req.body.email}] }
@@ -25,7 +24,6 @@ module.exports = {
 							lastName: req.body.lastName,
 							tier: 'user'
 						})
-						console.log('fine',user)
 						return user;
 					})
 					.then(user => res.status(200).send(user));
@@ -59,8 +57,8 @@ module.exports = {
 			});
 		})(req, res, next);
 	},
+	// below api not really needed?
 	profile(req, res, next) {
-		console.log(req);		
 		return User
 			.findById(req.params.userId)
 			.then(user => {
