@@ -68,8 +68,8 @@ module.exports = (sequelize, DataTypes) => {
 				});
 			},
 			associate: (models) => {
-				User.hasMany(models.Event, { foreignKey: 'user_id', as : 'userEvents' });
-				User.hasOne(models.Detail, { foreignKey: 'user_id', as : 'UserDetails' });
+				User.hasMany(models.Event, { foreignKey: 'user_id'});
+				User.hasOne(models.Detail, { foreignKey: 'user_id'});
 			}
 		}
 	});

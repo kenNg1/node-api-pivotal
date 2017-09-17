@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        District.hasMany(models.Event, { foreignKey: 'district_id', as : 'districtEvents' });
+        District.hasMany(models.Event, { foreignKey: 'district_id' });
       }
     }
   });

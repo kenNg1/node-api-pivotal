@@ -1,5 +1,6 @@
 const Event = require('../models').Event;
 const User = require('../models').User;
+const Detail = require('../models').Detail;
 // const Comment = require('../models').Comment;
 
 module.exports = {
@@ -24,7 +25,7 @@ module.exports = {
 				date: req.body.date,
 				time: req.body.time,
 				address: req.body.address,
-				user_id		: req.decoded.user
+				user_id		: req.body.user_id || req.decoded.user
 				
 			})
 			.then(event => res.status(200).send(event))
@@ -73,7 +74,14 @@ module.exports = {
 	show(req, res){
 		return Event
 			.findById(req.params.eventId, {
-				include: [{ model: User, as: 'User' }]
+				include: [
+					{
+					 model: User,
+					 include: [
+						{model: Detail}
+					 ]  
+					}
+				]
 			})
 			.then(
 				event => {

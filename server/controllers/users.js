@@ -1,4 +1,5 @@
 const User 		= require('../models').User;
+const Detail 	= require('../models').Detail;
 const passport 	= require('passport');
 const jwt 		= require('jsonwebtoken');
 const config	= require('../config/general');
@@ -16,6 +17,16 @@ module.exports = {
 						email 	: req.body.email,
 						username: req.body.username,
 						password: req.body.password
+					})
+					.then(user => {
+						Detail.create({
+							user_id: user.id,
+							firstName: req.body.firstName,
+							lastName: req.body.lastName,
+							tier: 'user'
+						})
+						console.log('fine',user)
+						return user;
 					})
 					.then(user => res.status(200).send(user));
 				}
