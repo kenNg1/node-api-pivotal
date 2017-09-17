@@ -26,7 +26,15 @@ module.exports = {
 						})
 						return user;
 					})
-					.then(user => res.status(200).send(user));
+					.then(user => {
+						const token = jwt.sign({ user: user.id }, config.secret, {expiresIn: 24 * 60 * 60});
+						res.status(200).send({
+							token 	: token,
+							id	: user.id,
+							email	: user.email,
+							username: user.username
+						});
+					});
 				}
 				else {
 					return res.status(400).send({message: 'Username / Email is Already Exist'});
@@ -50,7 +58,7 @@ module.exports = {
 				const token = jwt.sign({ user: user.id }, config.secret, {expiresIn: 24 * 60 * 60});
 				return res.status(200).send({
 					token 	: token,
-					userId	: user.id,
+					id	: user.id,
 					email	: user.email,
 					username: user.username
 				});
