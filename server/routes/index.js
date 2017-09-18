@@ -1,6 +1,7 @@
 const usersController = require('../controllers').users;
 const eventsController = require('../controllers').events;
 const detailsController = require('../controllers').details;
+const sportsController = require('../controllers').sports;
 const auth = require('../config/auth');
 
 module.exports = (app) => {
@@ -20,11 +21,10 @@ module.exports = (app) => {
 	});
 
 	// is this necessary?? app.get('/signout', auth.IsAuthenticated, auth.destroySession);
-	// probs don't need this as we get the details another way... app.get('/api/profile/:userId', usersController.profile);
+	// probs don't need profile api as we get the details another way... app.get('/api/profile/:userId', usersController.profile);
 
 	// All events Route
 	// fix the , auth.IsAuthenticated , bit
-	
 	app.post('/api/events/', eventsController.create); // new post route
 	app.put('/api/events/:eventId', eventsController.update); // update post route
 	app.delete('/api/events/:eventId', eventsController.destroy); // delete post route
@@ -33,12 +33,19 @@ module.exports = (app) => {
 
 	// All details Route
 	// fix the , auth.IsAuthenticated , bit
-	
 	app.post('/api/details/', detailsController.create); // new post route
 	app.put('/api/details/:detailId', detailsController.update); // update post route
 	app.delete('/api/details/:detailId', detailsController.destroy); // delete post route
 	app.get('/api/details/', detailsController.index); // all post list route
 	app.get('/api/details/:detailId', detailsController.show); // get post content by id route
+
+	// All details Route
+	// fix the , auth.IsAuthenticated , bit
+	app.post('/api/sports/', sportsController.create); // new post route
+	app.put('/api/sports/:sportId', sportsController.update); // update post route
+	app.delete('/api/sports/:sportId', sportsController.destroy); // delete post route
+	app.get('/api/sports/', sportsController.index); // all post list route
+	app.get('/api/sports/:sportId', sportsController.show); // get post content by id route
 
 	// All post Route
 	// app.post('/api/post/', auth.IsAuthenticated, postsController.create); // new post route
@@ -47,10 +54,4 @@ module.exports = (app) => {
 	// app.get('/api/posts/', auth.IsAuthenticated, postsController.list); // all post list route
 	// app.get('/api/post/:postId', auth.IsAuthenticated, postsController.content); // get post content by id route
 
-	// All Comment Route
-	// app.post('/api/post/:postId/comment', auth.IsAuthenticated, commentsController.create); // new comment route
-	// app.put('/api/post/:postId/comment/:commentId', auth.IsAuthenticated, commentsController.update); // update comment route
-	// app.delete('/api/post/:postId/comment/:commentId', auth.IsAuthenticated, commentsController.destroy); // delete comment route
-	// app.post('/api/post/:postId/comment/:commentId/replay', auth.IsAuthenticated, commentsController.replay); // replay comment route
-	// app.get('/api/post/:postId/comments', auth.IsAuthenticated, commentsController.postComment); // list post comment route
 };
