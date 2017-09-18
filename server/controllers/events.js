@@ -2,6 +2,7 @@ const Event = require('../models').Event;
 const User = require('../models').User;
 const Detail = require('../models').Detail;
 const District = require('../models').District;
+const Sport = require('../models').Sport;
 // const Comment = require('../models').Comment;
 
 module.exports = {
@@ -76,14 +77,64 @@ module.exports = {
 			.catch( error => res.status(404).send({ message: "Event Not Found![1]" }) );
 	},
 
+		// def index
+    // @events = Event.all
+    // if params[:name]
+    //   @sports = []
+    //   Sport.search(params[:name]).each do |sport|
+    //     @sports.push(sport.name)
+    //   end 
+    //   @events = Event.search(params[:name])
+    // else
+    //   @events = Event.all
+    // end
+    // render json: {:events=>@events.as_json(:include => [:district, {:user=>{
+    //                                                       :include => :detail}}, {:sport=> {:only => :name }}]),
+	// 			  :sports=>@sports.as_json()}
+	// end
+
+	queryIndex(req, res, next){
+		if(req.query['name']){
+			// code
+			return Event
+			.findAll({
+				where: {
+					name: {$ilike: '%' + req.query['name'] + '%'}
+				},
+				include: [
+				{model: District},
+				{model:User, attributes: ['id'], include: [{model: Detail}]},
+				// {model:User, include: [{model: Detail}]},
+			]})
+			.then(event => {
+				Sport.findAll({
+					where: {
+						name: {$ilike: '%' + req.query['name']+ '%'}
+					},
+					attributes: ['id','name']
+				})
+					.then(sport => {
+						let obj = {};
+						obj.sports = sport;
+						obj.events = event;
+						res.status(200).send(obj)
+					})
+					.catch(error => res.status(400).send(error))
+			 })
+			.catch( error => res.status(400).send(error) );
+		} else {
+			next()
+		}
+	},
+
 	index(req, res){
 		return Event
 			.findAll({include: [
-				{
-					model: District
-				}
+				{model: District},
+				{model:User, attributes: ['id'], include: [{model: Detail}]},
+				// {model:User, include: [{model: Detail}]},
 			]})
-			.then( event => res.status(200).send(event) )
+			.then(event => res.status(200).send(event) )
 			.catch( error => res.status(400).send(error) );
 	},
 

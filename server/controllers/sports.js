@@ -60,7 +60,7 @@ module.exports = {
 			})
 			.catch( error => res.status(400).send(error) );
 	},
-
+	
 	show(req, res){
 		return Sport
 			.findById(req.params.sportId)
