@@ -47,31 +47,31 @@ module.exports = {
     */
 
     // keeping commented out - put back in if needed 
-    // return [
-    //   queryInterface.removeColumn(
-    //     'Users',
-    //     'user_id',
-    //     {
-    //       type: Sequelize.INTEGER,
-    //       allowNull: false
-    //     }
-    //   ),
-    //   queryInterface.addColumn(
-    //     'Districts',
-    //     'district_id',
-    //     {
-    //       type: Sequelize.INTEGER,
-    //       allowNull: false
-    //     }
-    //   ),
-    //   queryInterface.addColumn(
-    //     'Sports',
-    //     'sport_id',
-    //     {
-    //       type: Sequelize.INTEGER,
-    //       allowNull: false
-    //     }
-    //   )
-    // ]
+    return [
+      queryInterface.removeColumn(
+        'Events',
+        'user_id',
+        {
+          type: Sequelize.INTEGER,
+          // allowNull: false
+        }
+      ),
+      queryInterface.removeColumn(
+        'Events',
+        'district_id',
+        {
+          type: Sequelize.INTEGER,
+          // allowNull: false
+        }
+      ),
+      queryInterface.removeColumn(
+        'Events',
+        'sport_id',
+        {
+          type: Sequelize.INTEGER,
+          // allowNull: false
+        }
+      )
+    ]
   }
 };

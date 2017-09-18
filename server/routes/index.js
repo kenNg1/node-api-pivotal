@@ -1,6 +1,6 @@
 const usersController = require('../controllers').users;
 const eventsController = require('../controllers').events;
-const commentsController = require('../controllers').comments;
+const detailsController = require('../controllers').details;
 const auth = require('../config/auth');
 
 module.exports = (app) => {
@@ -30,6 +30,15 @@ module.exports = (app) => {
 	app.delete('/api/events/:eventId', eventsController.destroy); // delete post route
 	app.get('/api/events/', eventsController.index); // all post list route
 	app.get('/api/events/:eventId', eventsController.show); // get post content by id route
+
+	// All details Route
+	// fix the , auth.IsAuthenticated , bit
+	
+	app.post('/api/details/', detailsController.create); // new post route
+	app.put('/api/details/:detailId', detailsController.update); // update post route
+	app.delete('/api/details/:detailId', detailsController.destroy); // delete post route
+	app.get('/api/details/', detailsController.index); // all post list route
+	app.get('/api/details/:detailId', detailsController.show); // get post content by id route
 
 	// All post Route
 	// app.post('/api/post/', auth.IsAuthenticated, postsController.create); // new post route

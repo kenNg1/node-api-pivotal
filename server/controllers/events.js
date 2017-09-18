@@ -1,6 +1,7 @@
 const Event = require('../models').Event;
 const User = require('../models').User;
 const Detail = require('../models').Detail;
+const District = require('../models').District;
 // const Comment = require('../models').Comment;
 
 module.exports = {
@@ -34,7 +35,16 @@ module.exports = {
 
 	update(req, res){
 		return Event
-			.findById(req.body.id)
+			.findById(req.body.id, {
+				include: [
+					{
+					 model: User,
+					 include: [
+						{model: Detail}
+					 ]  
+					}
+				]
+			})
 			.then(
 				event => {
 					console.log(event);
@@ -68,7 +78,11 @@ module.exports = {
 
 	index(req, res){
 		return Event
-			.findAll()
+			.findAll({include: [
+				{
+					model: District
+				}
+			]})
 			.then( event => res.status(200).send(event) )
 			.catch( error => res.status(400).send(error) );
 	},

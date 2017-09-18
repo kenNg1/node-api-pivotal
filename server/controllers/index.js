@@ -1,9 +1,9 @@
 const users = require('./users');
 const events = require('./events');
-const comments = require('./comments');
+const details = require('./details');
 
 module.exports = {
 	users,
 	events,
-	comments
+	details
 };
