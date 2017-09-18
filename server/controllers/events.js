@@ -27,8 +27,9 @@ module.exports = {
 				date: req.body.date,
 				time: req.body.time,
 				address: req.body.address,
+				district_id		: req.body.district_id || req.decoded.user,
+				sport_id		: req.body.sport_id || req.decoded.user,
 				user_id		: req.body.user_id || req.decoded.user
-				
 			})
 			.then(event => res.status(200).send(event))
 			.catch(error => res.status(400).send(error));
