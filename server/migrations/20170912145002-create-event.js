@@ -26,7 +26,8 @@ module.exports = {
 				}
       },
       level: {
-        type: Sequelize.STRING,
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        defaultValue: [],
         // allowNull: true,
 				validate: {
 					notEmpty: false

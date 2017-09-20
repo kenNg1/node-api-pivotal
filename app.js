@@ -40,12 +40,12 @@ app.use(passport.initialize());
 
 // initializing the route to the app
 require('./server/routes')(app);
-app.get('/', (req, res) => {
-	res.send('Hello! The API is Up at http://localhost:' + port + '/api');
-});
+
+app.use(express.static('dist'))
 
 // setting up the port
-const port = parseInt(process.env.PORT, 10) || 8000;
+const port = parseInt(process.env.PORT, 10) || '8000';
+// const port = parseInt(process.env.PORT, 10) || '3000';
 app.listen(port);
 
 module.exports = app;

@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var Event = sequelize.define('Event', {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    level: DataTypes.STRING,
+    level: DataTypes.ARRAY(DataTypes.STRING),
     intensity: DataTypes.STRING,
     terrain: DataTypes.STRING,
     min_ppl: DataTypes.INTEGER,

@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "qwertup",
-    "password": "aa71b1e4",
+    "password": "buffered07",
     "database": "node_api_dev",
     "host": "127.0.0.1",
     "port": 5432,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "qwertup",
-    "password": "aa71b1e4",
+    "password": "buffered07",
     "database": "node_api_test",
     "host": "127.0.0.1",
     "port": 5432,
@@ -17,7 +17,7 @@
   },
   "production": {
     "username": "qwertup",
-    "password": "aa71b1e4",
+    "password": "buffered07",
     "database": "node_api",
     "host": "127.0.0.1",
     "port": 5432,
