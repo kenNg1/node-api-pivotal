@@ -1,7 +1,11 @@
-FROM node:8-alpine
-# Working directory for application
-WORKDIR /usr/src/app
-# Binds to port 7777
-EXPOSE 7777
-# Creates a mount point
-VOLUME [ "/usr/src/app" ]
+FROM node:7.7.2-alpine
+
+WORKDIR /usr/app
+
+COPY package.json .
+RUN npm install --quiet
+RUN npm install -g sequelize-cli
+# RUN sequelize db:migrate
+
+
+COPY . .

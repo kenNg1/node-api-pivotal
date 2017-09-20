@@ -1,6 +1,6 @@
 //need to add extra fields
 
-const bcrypt = require('bcrypt'); 
+const bcrypt = require('bcryptjs'); 
 const config = require('../config/general');
 
 module.exports = (sequelize, DataTypes) => {

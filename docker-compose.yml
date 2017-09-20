@@ -1,19 +1,21 @@
 version: '2'
 services:
-  redis:
-    image: "redis:alpine"
-  postgres:
-    image: "postgres:latest"
-    environment:
-     POSTGRES_PASSWORD: 123456
-     POSTGRES_USER: postgres
   web:
     build: .
-    ports:
-     - "80:7777"
+    command: npm start
     volumes:
-     - .:/usr/src/app
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "8000:8000"
     depends_on:
       - postgres
-      - redis
-    command: ["./wait_for_it.sh", "postgres:5432", "--", "npm", "start"]
+    environment:
+      DATABASE_URL: "postgres://qwertup:buffered07@127.0.0.1:5432/node_api_dev"
+
+  postgres:
+    image: postgres:9.6.2-alpine
+    environment:
+      POSTGRES_USER: qwertup
+      POSTGRES_PASSWORD: buffered07
+      POSTGRES_DB: node_api_dev
