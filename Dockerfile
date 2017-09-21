@@ -5,7 +5,5 @@ WORKDIR /usr/app
 COPY package.json .
 RUN npm install --quiet
 RUN npm install -g sequelize-cli
-# RUN sequelize db:migrate
-
 
 COPY . .

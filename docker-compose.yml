@@ -9,13 +9,25 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - postgres
+      - pg
     environment:
-      DATABASE_URL: "postgres://qwertup:buffered07@127.0.0.1:5432/node_api_dev"
+                  # postgres://username:password@host:port/database
+                  # the above can be found in the config.json
+      DATABASE_URL: "postgres://qwertup:buffered07@pg:5432/node_api_dev"
 
-  postgres:
+  pg:
+    # the below credentials will be created on the build
     image: postgres:9.6.2-alpine
     environment:
-      POSTGRES_USER: qwertup
-      POSTGRES_PASSWORD: buffered07
-      POSTGRES_DB: node_api_dev
+      POSTGRES_USER: "qwertup"
+      POSTGRES_PASSWORD: "buffered07"
+      POSTGRES_DB: "node_api_dev"
+
+# IMPORTANT change host to "pg" in config.json
+# run docker-compose build
+# run docker-compose run
+# run docker ps -a
+# run docker exec -it <container name> bash for postgres
+# run docker exec -it <container name> sh for node
+# when in node bash run sequelize db:migrate , sequelize db:seed
+# sequelize db:seed --seed <seed file name> for a specific seed

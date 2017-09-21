@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     tier: DataTypes.STRING,
     nickname: DataTypes.STRING,
     image: DataTypes.STRING,
+    description: DataTypes.STRING,
     contact: DataTypes.STRING
   }, {
     classMethods: {

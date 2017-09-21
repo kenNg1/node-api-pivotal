@@ -3,7 +3,7 @@
     "username": "qwertup",
     "password": "buffered07",
     "database": "node_api_dev",
-    "host": "127.0.0.1",
+    "host": "pg",
     "port": 5432,
     "dialect": "postgres"
   },
@@ -24,3 +24,4 @@
     "dialect": "postgres"
   }
 }
+
