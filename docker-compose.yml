@@ -63,7 +63,7 @@ services:
       POSTGRES_DB: "node_api_dev"
 
 # IMPORTANT change host to "pg" in config.json
-# run docker-compose build
+# run docker-compose build OR docker-compose up
 # run docker-compose run
 # run docker ps -a
 # run docker exec -it <container name> bash for postgres

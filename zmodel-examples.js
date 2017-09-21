@@ -34,6 +34,16 @@ module.exports = (sequelize, DataTypes) => {
 					msg: "Empty message? Come one, just tell us what you think!"
 				}
 			}
+		},
+		post_type: {
+			type: DataTypes.STRING,
+			defaultValue: 'post',
+			validate: {
+				isIn: {
+					args: [['post', 'page']],
+					msg: "Must be in post and page type"
+				}
+			}
 		}
 	}, {
 		classMethods: {
