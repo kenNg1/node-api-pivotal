@@ -1,13 +1,52 @@
 version: '2'
 services:
-  web:
+  nginx:
+      build: ./nginx
+      links:
+          - node1:node1
+          - node2:node2
+          - node3:node3
+      ports:
+          - "80:80"
+          
+  node1:
     build: .
     command: npm start
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules
     ports:
-      - "8000:8000"
+      - "8000"
+    depends_on:
+      - pg
+    environment:
+                  # postgres://username:password@host:port/database
+                  # the above can be found in the config.json
+      DATABASE_URL: "postgres://qwertup:buffered07@pg:5432/node_api_dev"
+
+  node2:
+    build: .
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "8000"
+    depends_on:
+      - pg
+    environment:
+                  # postgres://username:password@host:port/database
+                  # the above can be found in the config.json
+      DATABASE_URL: "postgres://qwertup:buffered07@pg:5432/node_api_dev"
+
+  node3:
+    build: .
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "8000"
     depends_on:
       - pg
     environment:
