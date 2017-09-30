@@ -4,7 +4,7 @@ const User = require('../models').User;
 
 module.exports = {
 	IsAuthenticated(req, res, next) {
-		// console.log(req);
+        console.log('reeq',req);
 		const token = (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
 		if (token) {
 			jwt.verify(token, config.secret, (err, decoded) => {
