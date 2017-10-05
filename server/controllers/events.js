@@ -50,9 +50,12 @@ module.exports = {
 			.then(
 				event => {
 					console.log(event);
-					console.log(req.body)
+					console.log("bodee",req.body)
 					if(!event) return res.status(404).send({message: "Event Not Found![2]"});
-
+					if(req.body.level.length == 0) {
+						console.log("emptee")
+						req.body.level=event.level;
+					}
 					return event
 						.update(req.body, { fields: Object.keys(req.body) })
 						.then( updateEvent => res.status(200).send(event) )
@@ -148,6 +151,9 @@ module.exports = {
 					 include: [
 						{model: Detail}
 					 ]  
+					},
+					{
+					 model: Sport
 					}
 				]
 			})

@@ -57,12 +57,15 @@ module.exports = {
 				if (err) return next(err);
 
 				const token = jwt.sign({ user: user.id }, config.secret, {expiresIn: 24 * 60 * 60});
-				return res.status(200).send({
-					token 	: token,
-					id	: user.id,
-					email	: user.email,
-					username: user.username
-				});
+				const detail = Detail.find({where:{ user_id: user.id}}).then(detail=>{
+					return res.status(200).send({
+						token 	: token,
+						id	: user.id,
+						email	: user.email,
+						username: user.username,
+						tier: detail.tier
+					});
+				})
 			});
 		})(req, res, next);
 	},
@@ -74,7 +77,6 @@ module.exports = {
 				if (!user) {
 					return res.status(400).send({success: false, message: 'User not Found'});
 				}
-				
 				const data = {
 					id: user.id,
 					username: user.username,
