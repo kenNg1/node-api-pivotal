@@ -70,3 +70,10 @@ services:
 # run docker exec -it <container name> sh for node
 # when in node bash run sequelize db:migrate , sequelize db:seed
 # sequelize db:seed --seed <seed file name> for a specific seed
+
+# multiple node servers spun up --> do one thing to one do it to all images of it
+
+
+# angular --> API calls must be:
+#  /api/event for production
+#  http://localhost:8000/api/event for development

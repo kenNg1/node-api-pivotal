@@ -1,0 +1,149 @@
+// only relevant from line 108
+
+ 1  docker pull kenng1/pivotal-node
+    2  docker pull kenng1/pivotal-node:firs
+    3  docker pull kenng1/pivotal-node:first
+    4  docker pull kenng1/pivotal-db:first
+    5  docker-compose up
+    6  ls
+    7  cd
+    8  ls
+    9  psql
+   10  cd
+   11  ls
+   12  docker images
+   13  docker run -p 10.0.0.10:80:80 -name kenng1/pivotal-node
+   14  docker run -p 10.0.0.10:80:80 --name kenng1/pivotal-node
+   15  docker run -p 10.0.0.10:80:80 --name kenng1/pivotal-node:first
+   16  docker run -p 10.0.0.10:80:80 --name kenng1/pivotal-node:first .
+   17  docker run 240e853aec5a
+   18  docker ps -a
+   19  docker up
+   20  docker-compose up
+   21  ls
+   22  docker images
+   23  docker
+   24  docker ps -a
+   25  docker images
+   26  docker start 240e853aec5a
+   27  docker container
+   28  docker container create
+   29  docker run -d -p 8080:80 pivotal-node:first
+   30  docker run -d -p 8080:80 kenng1/pivotal-node:first
+   31  docker events
+   32  docker ps -a
+   33  docker stop 9f15adb1eefe
+   34  docker run -d -p 8000:80 kenng1/pivotal-node:first
+   35  docker-compose
+   36  docker-compose build
+   37  $ docker run image_name:tag_name
+   38  $ docker run pivotal-node:first
+   39  docker ps -a
+   40  docker stop 31fa9cca476d
+   41  docker ps -a
+   42  docker images
+   43  docker run -d --restart=always -p 80:80 kenng1/pivotal-node:first
+   44  docker ps -a
+   45  docker run -d --restart=always -p 5432 kenng1/pivotal-db:first
+   46  docker run -d --restart=always -p 8000:8000 kenng1/pivotal-node:first
+   47  docker images
+   48  docker ps -a
+   49  docker stop 9045b471e827
+   50  docker rmi 9045b471e827
+   51  docker ps -a
+   52  docker exec -it 623a21190e93 npm start
+   53  docker exec -it 623a21190e93 sh
+   54  ls
+   55  cd node-api-pivotal/
+   56  docker ps -a
+   57  docker exec -it 1f48d53da05a sh
+   58  docker ps -a
+   59  docker exec -it 4f32385990dd sh
+   60  git pull
+   61  ls
+   62  cd node-api-pivotal/
+   63  git pull
+   64  git
+   65  docker 
+   66  docker images
+   67  docker ps -a
+   68  docker stop 623a21190e93
+   69  docker rmi 623a21190e93
+   70  docker ps -a
+   71  docker rm 623a21190e93
+   72  docker rm 005516e2eb8b
+   73  docker ps- a
+   74  docker ps -a
+   75  docker rmi 
+   76  docker rmi 005516e2eb8b
+   77  docker rmi kenng1/pivotal-db:first
+   78  docker
+   79  docker rm
+   80  docker images
+   81  docker rm 240e853aec5a
+   82  docker rmi 240e853aec5a
+   83  docker images
+   84  docker ps -a
+   85  docker stop 005516e2eb8b
+   86  docker rm 005516e2eb8b
+   87  docker ps -a
+   88  docker stop 9045b471e827
+   89  docker rm 9045b471e827
+   90  docker stop 
+   91  docker stop 31fa9cca476d
+   92  docker rm 31fa9cca476d
+   93  docker stop f748c55586ad
+   94  docker rm f748c55586ad
+   95  ls
+   96  docker ps -a
+   97  docker stop 9f15adb1eefe
+   98  docker rm 9f15adb1eefe
+   99  docker images
+  100  docker rmi 240e853aec5a
+  101  docker rmi 2d696327ab2e
+  102  docker rmi 76da55c8019d
+  103  docker rmi 8bf87a45bd26
+  104  docker rmi bf72189a3c51
+  105  docker images
+  106  git pull https://github.com/kenNg1/node-api-pivotal.git
+
+// the ones below are relevant
+
+  107  git clone https://github.com/kenNg1/node-api-pivotal.git
+  108  ls
+  109  cd node-api-pivotal/
+  110  ls
+  111  docker-compose build
+  112  ls
+  113  docker-compose up
+  114  docker-compose build
+  115  docker-compose up
+  116  docker ps -a
+  117  docker exec -it 4f32385990dd sh
+  118  docker-compose up
+  119  git git pull
+  120  git pull
+  121  docker-compose up
+  122  git pull
+  123  docker-compose up
+  124  docker ps -a
+  125  docker events
+  126  docker log
+  127  docker logs
+  128  docker logs 4f32385990dd
+  129  [A
+  130  docker logs 4f32385990dd
+  131  cd piv
+  132  ls
+  133  cd node-api-pivotal/
+  134  ls
+  135  docker logs
+  136  docker ps -a
+  137  docker logs 4f32385990dd
+  138  git pull
+  139  docker-compose up
+  140  docker-compose up --remove-orphans
+  141  ls
+  142  cd node-api-pivotal/
+  143  ls
+  144  history
