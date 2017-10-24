@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Sport = sequelize.define('Sport', {
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     rules: DataTypes.STRING,
     sportsExternalUrl: DataTypes.STRING,
     imageUrl: DataTypes.STRING

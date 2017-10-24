@@ -79,3 +79,6 @@ services:
 # angular --> API calls must be:
 #  /api/event for production
 #  http://localhost:8000/api/event for development
+
+# https://stackoverflow.com/questions/22907231/copying-files-from-host-to-docker-container
+# supermetrics 
