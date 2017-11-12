@@ -9,7 +9,6 @@ module.exports = {
 			.create({
 				name: req.body.name,
 				description: req.body.description,
-				rules: req.body.rules,
 				sportsExternalUrl: req.body.sportsExternalUrl,
 				imageUrl: req.body.imageUrl
 			})
