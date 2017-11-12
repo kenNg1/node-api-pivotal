@@ -16,9 +16,6 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      rules: {
-        type: Sequelize.STRING
-      },
       sportsExternalUrl: {
         type: Sequelize.STRING
       },
