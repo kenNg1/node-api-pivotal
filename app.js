@@ -42,7 +42,7 @@ app.use(passport.initialize());
 require('./server/routes')(app);
 
 // comment this out during development mode
-// app.use(express.static('dist'))
+app.use(express.static('dist'))
 
 // setting up the port
 const port = parseInt(process.env.PORT, 10) || '8000';
