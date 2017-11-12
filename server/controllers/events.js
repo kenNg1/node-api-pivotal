@@ -36,6 +36,7 @@ module.exports = {
 	},
 
 	update(req, res){
+		console.log("reqq",req);
 		return Event
 			.findById(req.body.id, {
 				include: [
@@ -58,11 +59,14 @@ module.exports = {
 					}
 					return event
 						.update(req.body, { fields: Object.keys(req.body) })
-						.then( updateEvent => res.status(200).send(event) )
+						.then( updateEvent => {
+							return res.status(200).send(event)} )
 						.catch( errorUpdate => res.status(400).send(errorUpdate) );
 				}
 			)
-			.catch( error => res.status(404).send(error) );
+			.catch( error => {
+				console.log("error!")
+				return res.status(404).send(error)} );
 	},
 
 	destroy(req, res){
@@ -103,7 +107,8 @@ module.exports = {
 			return Event
 			.findAll({
 				where: {
-					name: {$ilike: '%' + req.query['name'] + '%'}
+					name: {$ilike: '%' + req.query['name'] + '%'},
+					date: { $gte: new Date().setHours(0,0,0,0)}					
 				},
 				include: [
 				{model: District},
@@ -113,7 +118,7 @@ module.exports = {
 			.then(event => {
 				Sport.findAll({
 					where: {
-						name: {$ilike: '%' + req.query['name']+ '%'}
+						name: {$ilike: '%' + req.query['name']+ '%'},
 					},
 					attributes: ['id','name']
 				})
@@ -137,7 +142,11 @@ module.exports = {
 				{model: District},
 				{model:User, attributes: ['id'], include: [{model: Detail}]},
 				// {model:User, include: [{model: Detail}]},
-			]})
+				],
+				where: {
+					date: { $gte: new Date().setHours(0,0,0,0)}
+				},
+			})
 			.then(event => res.status(200).send(event) )
 			.catch( error => res.status(400).send(error) );
 	},

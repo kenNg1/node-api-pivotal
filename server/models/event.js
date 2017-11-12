@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     videoUpload: DataTypes.STRING,
     date: DataTypes.DATE,
     time: DataTypes.TIME,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    usersJoined: DataTypes.ARRAY(DataTypes.INTEGER)
   }, {
     classMethods: {
       associate: function(models) {

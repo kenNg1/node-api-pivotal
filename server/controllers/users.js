@@ -22,7 +22,7 @@ module.exports = {
 							user_id: user.id,
 							firstName: req.body.firstName,
 							lastName: req.body.lastName,
-							tier: 'user',
+							tier: '1',
 							image: 'https://cdn4.iconfinder.com/data/icons/follower/512/login-man-person-human-body-512.png'
 						})
 						return user;
