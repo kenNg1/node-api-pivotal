@@ -38,11 +38,19 @@ module.exports = {
 					console.log(detail);
 					console.log(req.body)
 					if(!detail) return res.status(404).send({message: "Detail Not Found![2]"});
+					// return User.findById(req.body.user_id)
+					// .then(
+					// 	user=> {
+					// 	return user
+					// 	.update({ email: req.body.email})
+					// 	.then(user => {
+							return detail
+							.update(req.body, { fields: Object.keys(req.body) })
+							.then( updateDetail => res.status(200).send(detail) )
+							.catch( errorUpdate => res.status(400).send(errorUpdate) );
+					// 	})
+					// })
 
-					return detail
-						.update(req.body, { fields: Object.keys(req.body) })
-						.then( updateDetail => res.status(200).send(detail) )
-						.catch( errorUpdate => res.status(400).send(errorUpdate) );
 				}
 			)
 			.catch( error => res.status(404).send(error) );
