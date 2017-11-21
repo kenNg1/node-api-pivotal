@@ -164,6 +164,10 @@ SOFTWARE.
 MIT
 MIT
 
+ngx-flash-messages@1.0.4
+MIT
+MIT
+
 @angular/material@2.0.0-beta.12
 MIT
 The MIT License
