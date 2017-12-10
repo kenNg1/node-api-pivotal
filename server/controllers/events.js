@@ -26,7 +26,7 @@ module.exports = {
 				videoUpload: req.body.videoUpload,
 				date: req.body.date,
 				time: req.body.time,
-				length: req.body.time,
+				length: req.body.length,
 				address: req.body.address,
 				district_id		: req.body.district_id || req.decoded.user,
 				sport_id		: req.body.sport_id || req.decoded.user,
