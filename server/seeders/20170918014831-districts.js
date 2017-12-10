@@ -13,7 +13,7 @@ module.exports = {
       }], {});
     */
       return queryInterface.bulkInsert('Districts', [
-        {name: "Causeway Bay", lat:"22.2859787", lng:"114.1914919"},
+        {name:"Causeway Bay", lat:"22.2859787", lng:"114.1914919"},
         {name:"Central",lat:"22.2799907",lng:"114.1587983"},
         {name:"Discovery Bay",lat:"22.2921406",lng:"114.0101467"},
         {name:"Fanling",lat:"22.4916829",lng:"114.1414685"},
