@@ -122,7 +122,13 @@ module.exports = {
         // allowNull: true,
 				validate: {
 					notEmpty: false
-				}
+        }
+      },
+        length: {
+          type: Sequelize.INTEGER,
+          validate: {
+            notempty: false
+          }
       },
       address: {
         type: Sequelize.STRING,

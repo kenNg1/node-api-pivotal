@@ -19,6 +19,7 @@ module.exports = {
         {name:"Fanling",lat:"22.4916829",lng:"114.1414685"},
         {name:"Hung Hom",lat:"22.3055658",lng:"114.1887233"},
         {name:"Jordan",lat:"22.3048612",lng:"114.1692021"},
+        {name:"Prince Edward",lat:"22.3247000",lng:"114.1683000"},
         {name:"Kowloon City",lat:"22.3232097",lng:"114.1855505"},
         {name:"Lantau Island",lat:"22.2664984",lng:"113.941751"},
         {name:"Mong Kok",lat:"22.3203648",lng:"114.169773"},
