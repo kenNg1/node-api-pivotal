@@ -320,15 +320,15 @@ SOFTWARE.
 MIT
 MIT
 
+@angular/common@4.4.4
+MIT
+MIT
+
 @angular/forms@4.4.4
 MIT
 MIT
 
 @angular/platform-browser@4.4.4
-MIT
-MIT
-
-@angular/common@4.4.4
 MIT
 MIT
 
