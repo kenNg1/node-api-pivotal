@@ -3,6 +3,7 @@ const eventsController = require('../controllers').events;
 const detailsController = require('../controllers').details;
 const sportsController = require('../controllers').sports;
 const districtsController = require('../controllers').districts;
+const emailController = require('../controllers').email;
 const auth = require('../config/auth');
 
 module.exports = (app) => {
@@ -20,6 +21,8 @@ module.exports = (app) => {
 		}
 		res.send(content);
 	});
+
+	app.post('/api/email/', emailController.sendMail); // send email
 
 	// is this necessary?? app.get('/signout', auth.IsAuthenticated, auth.destroySession);
 	// probs don't need profile api as we get the details another way... app.get('/api/profile/:userId', usersController.profile);

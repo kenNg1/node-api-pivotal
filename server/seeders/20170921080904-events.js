@@ -33,7 +33,7 @@ module.exports = {
           "org_website": "1234",
           "imageUpload": "http://img.bleacherreport.net/img/images/photos/002/158/471/hi-res-73358819_crop_north.jpg?1360856180&w=630&h=420",
           "videoUpload": null,
-          "date": "2017-09-27T16:00:00.000Z",
+          "date": "2018-09-27T16:00:00.000Z",
           "time": "19:00:00",
           "address": "Room 2L, 498 EAST COAST ROAD",
           "createdAt": "2017-09-21T02:31:10.520Z",
