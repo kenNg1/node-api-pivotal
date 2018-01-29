@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "qwertup",
-    "password": "buffered07",
+    "username": "postgres",
+    "password": "tagada11",
     "database": "node_api_dev",
-    "host": "pg",
+    "host": "localhost",
     "port": 5432,
     "dialect": "postgres"
   },

@@ -44,6 +44,7 @@ module.exports = {
 			.catch(error => res.status(400).send(error));
 	},
 	login(req, res, next) {
+		console.log("test"),
 		passport.authenticate('local', (err, user, info) => {
 			if (err) {
 				return next(err);
