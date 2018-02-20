@@ -320,6 +320,10 @@ SOFTWARE.
 MIT
 MIT
 
+ngx-carousel@1.3.5
+MIT
+MIT
+
 @angular/common@4.4.4
 MIT
 MIT
